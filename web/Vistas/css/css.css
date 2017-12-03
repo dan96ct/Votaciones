@@ -1,0 +1,62 @@
+
+.cssmenu
+{
+    width:auto;
+}
+
+.cssmenu ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: gray;
+}
+
+.cssmenu > li
+{
+    float:left;
+}
+
+.cssmenu li ul
+{
+    display:none;
+    position:absolute;
+    min-width:120px;
+    background-color:rgba(0, 0, 0, 0.8);
+}
+
+.cssmenu li ul li
+{
+    position:relative;
+}
+
+.cssmenu li ul li ul
+{
+    right:-140px;
+    top:0;
+}
+
+.cssmenu li:hover > ul
+{
+    display:block;
+}
+
+.cssmenu li
+{
+    float: left;
+}
+ .cssmenu li a
+ {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+     
+ }
+
+ .cssmenu li a:hover
+ {
+    background-color: #E6152B;
+ }
