@@ -46,17 +46,22 @@
 {
     float: left;
 }
- .cssmenu li a
- {
+.cssmenu li a
+{
     display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-     
- }
 
- .cssmenu li a:hover
- {
+}
+
+.cssmenu li a:hover
+{
     background-color: #E6152B;
- }
+}
+.registroForm{width: 50%;
+              margin:0 auto;}
+#iconUser{
+    color: red;
+}

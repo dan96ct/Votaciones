@@ -11,8 +11,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="Vistas/css/css.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
-        <%@include file="Vistas/menu.jsp" %>
-    </body>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Votaciones/index.jsp">Votaciones</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Votar</a></li>
+                <li><a href="#">Consultar censo</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
+                <li><a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
+            </ul>
+        </div>
+    </nav>
+</head>
+<body>
+
+</body>
 </html>
