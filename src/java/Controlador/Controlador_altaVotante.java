@@ -47,7 +47,7 @@ public class Controlador_altaVotante extends HttpServlet {
         try {
             Operaciones operaciones = new Operaciones();
             operaciones.altaVotante(votante);
-            response.sendRedirect("/Votaciones/Vistas/altaVotante_vista.jsp");
+            response.sendRedirect("/Votaciones/Vistas/confirmacion_vista.jsp");
         } catch (SQLException sQLException) {
             System.out.println("Ha surgido un problema al introducir los datos en la BD.");
         }
