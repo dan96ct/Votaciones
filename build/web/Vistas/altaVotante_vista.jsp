@@ -36,7 +36,7 @@
 <body>
     <div class="registroForm">
         <h2>Rellena los campos</h2>
-        <form action="/action_page.php">
+        <form action="/Votaciones/Controlador_altaVotante">
             <div class="form-group">
                 <label for="text">NIF</label>
                 <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif">

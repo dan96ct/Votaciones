@@ -5,10 +5,12 @@
  */
 package Controlador;
 
+import DAO.Operaciones;
 import Modelo.Votante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +34,7 @@ public class Controlador_altaVotante extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         String nif = (String) request.getParameter("nif");
         String nombre = (String) request.getParameter("nombre");
         String apellidos = (String) request.getParameter("apellidos");
@@ -40,6 +43,18 @@ public class Controlador_altaVotante extends HttpServlet {
         String passwd = (String) request.getParameter("passwd");
 
         Votante votante = new Votante(nif, nombre, apellidos, Domicilio, fecha_nac, passwd);
+        
+        try {
+            Operaciones operaciones = new Operaciones();
+            operaciones.altaVotante(votante);
+            response.sendRedirect("/Votaciones/Vistas/altaVotante_vista.jsp");
+        } catch (SQLException sQLException) {
+            System.out.println("Ha surgido un problema al introducir los datos en la BD.");
+        }
+        
+                
+        
+        
       
 
     }

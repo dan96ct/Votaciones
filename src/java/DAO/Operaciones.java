@@ -19,11 +19,17 @@ public class Operaciones {
     public void altaVotante(Votante ObjVotante) throws SQLException {
         Conexion_bd con = new Conexion_bd();
         Connection conn = con.AbreConexion();
-        String ordensql = "INSERT INTO `bd_votaciones`.`votantes` (`nif`, `nombre`, `apellidos`, `domicilio`, `fecha_nac`, `password`) VALUES (?, ?, ?, ?, ?, ?);";
+        
+        String ordensql = "INSERT INTO `votantes` (`nif`, `nombre`, `apellidos`, `domicilio`, `fecha_nac`, `password`) VALUES (?, ?, ?, ?, ?, ?);";
         PreparedStatement PrepStm = conn.prepareStatement(ordensql);
         PrepStm.setString(1, ObjVotante.getNif());
         PrepStm.setString(2, ObjVotante.getNombre());
         PrepStm.setString(3, ObjVotante.getApellido());
-        //PrepStm.setDate(5, java.sql.Date.valueOf(_ObjVotante.getFechaNac());        
+        PrepStm.setString(4, ObjVotante.getDomicilio());
+        PrepStm.setDate(5, java.sql.Date.valueOf(ObjVotante.getFecha_nac()));
+        PrepStm.setString(6, ObjVotante.getPassword());
+        PrepStm.executeUpdate();
+         
+        con.CierraConexion(conn);
     }
 }
