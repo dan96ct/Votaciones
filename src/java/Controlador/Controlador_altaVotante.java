@@ -5,12 +5,16 @@
  */
 package Controlador;
 
+import DAO.ConexionBBDD;
 import DAO.Operaciones;
 import Modelo.Votante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +25,23 @@ import javax.servlet.http.HttpServletResponse;
  * @author dani
  */
 public class Controlador_altaVotante extends HttpServlet {
+    private Connection Conexion;
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        ConexionBBDD ConexBD;  
+        try {
+            ConexBD = ConexionBBDD.GetConexion();
+            Conexion=ConexBD.GetCon();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Controlador_altaVotante.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador_altaVotante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,7 +67,9 @@ public class Controlador_altaVotante extends HttpServlet {
         
         try {
             Operaciones operaciones = new Operaciones();
-            operaciones.altaVotante(votante);
+            Conexion.setAutoCommit(false);
+            operaciones.altaVotante(votante,Conexion);
+            Conexion.commit();
             response.sendRedirect("/Votaciones/Vistas/confirmacion_vista.jsp");
         } catch (SQLException sQLException) {
             System.out.println("Ha surgido un problema al introducir los datos en la BD.");
