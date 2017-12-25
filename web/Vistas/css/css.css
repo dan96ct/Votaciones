@@ -65,3 +65,10 @@
 #iconUser{
     color: red;
 }
+h2{text-align: center;}
+.partidos_caja{margin: 0 auto;
+width: 50%;}
+.partido{display: inline;
+width: 25%;
+float: left;
+text-align: center;}

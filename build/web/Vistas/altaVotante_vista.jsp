@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registrar</title>
         <meta charset="utf-8">
         <link href="css/css.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,11 +23,11 @@
                 <a class="navbar-brand" href="/Votaciones/index.jsp">Votaciones</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="#">Votar</a></li>
+                <li><a href="/Votaciones/Vistas/votar_vista.jsp">Votar</a></li>
                 <li><a href="#">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
+                <li class="active"> <a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
                 <li><a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
             </ul>
         </div>

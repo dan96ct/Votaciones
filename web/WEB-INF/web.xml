@@ -4,9 +4,17 @@
         <servlet-name>Controlador_altaVotante</servlet-name>
         <servlet-class>Controlador.Controlador_altaVotante</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controlador_votar</servlet-name>
+        <servlet-class>Controlador.Controlador_votar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador_altaVotante</servlet-name>
         <url-pattern>/Controlador_altaVotante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador_votar</servlet-name>
+        <url-pattern>/Controlador_votar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -19,7 +19,7 @@ public class Operaciones {
     public void altaVotante(Votante ObjVotante,Connection conn) throws SQLException {
 
 
-        String ordensql = "INSERT INTO `votantes` (`nif`, `nombre`, `apellidos`, `domicilio`, `fecha_nac`, `password`) VALUES (?, ?, ?, ?, ?, ?);";
+        String ordensql = "INSERT INTO `votantes` (`nif`, `nombre`, `apellidos`, `domicilio`, `fecha_nac`, `password`) VALUES (?, ?, ?, ?, ?, AES_ENCRYPT(?,'sorbete_de_limon'));";
         PreparedStatement PrepStm = conn.prepareStatement(ordensql);
         PrepStm.setString(1, ObjVotante.getNif());
         PrepStm.setString(2, ObjVotante.getNombre());
@@ -28,5 +28,12 @@ public class Operaciones {
         PrepStm.setDate(5, java.sql.Date.valueOf(ObjVotante.getFecha_nac()));
         PrepStm.setString(6, ObjVotante.getPassword());
         PrepStm.executeUpdate();
+    }
+    
+    public void votar(Connection conn){
+        
+         
+    }
+    public void compruebaDatos(){
     }
 }
