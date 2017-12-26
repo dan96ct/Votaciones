@@ -20,6 +20,12 @@ public class Votante {
         this.fecha_nac = fecha_nac;
         this.password = password;
     }
+
+    public Votante(String nif, String password) {
+        this.nif = nif;
+        this.password = password;
+    }
+    
     public String getNif() {
         return nif;
     }

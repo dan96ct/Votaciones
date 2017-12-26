@@ -13,7 +13,6 @@
         <meta charset="utf-8">
         <link href="css/css.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="Vistas/css/css.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -38,11 +37,11 @@
     <div class="partidos_caja">
         <div id="partido1" class="partido">
             <img src="imagenes/pp.png" width="150" height="150" alt="pp"/>
-            <p><input type="radio" name="partidos" value="pp"/> Partido Popular</p>
+            <p><input type="radio" name="partidos" value="PP"/> Partido Popular</p>
         </div>
         <div id="partido2" class="partido">
             <img src="imagenes/psoe.png" width="150" height="150" alt="psoe"/>
-            <p><input type="radio" name="partidos"value="psoe"/> Partido socialista</p>
+            <p><input type="radio" name="partidos"value="PSOE"/> Partido socialista</p>
         </div>
         <div id="partido3" class="partido">
             <img src="imagenes/podemos.jpg" width="150" height="150" alt="podemos"/>
@@ -52,7 +51,7 @@
             <img src="imagenes/ciudadanos.jpg" width="150" height="150" alt="ciudadanos"/>
             <p><input type="radio" name="partidos" value="ciudadanos" /> Ciudadanos</p>
         </div>
-        <form action="">
+        <form action="/Votaciones/Controlador_votar">
             <div class="form-group">
                 <label for="text">NIF</label>
                 <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif">

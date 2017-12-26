@@ -29,16 +29,15 @@ public class Controlador_votar extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init(); //To change body of generated methods, choose Tools | Templates.
-        ConexionBBDD ConexBD;
         try {
+            super.init(); //To change body of generated methods, choose Tools | Templates.
+            ConexionBBDD ConexBD;
             ConexBD = ConexionBBDD.GetConexion();
             Conexion = ConexBD.GetCon();
-
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Controlador_altaVotante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador_altaVotante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -53,17 +52,22 @@ public class Controlador_votar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         String nif = (String) request.getParameter("nif");
         String passwd = (String) request.getParameter("passwd");
         String votoPartido = (String) request.getParameter("partidos");
-
+        System.out.println(votoPartido);
 
         try {
             Operaciones operaciones = new Operaciones();
-            Conexion.setAutoCommit(false);
-            Conexion.commit();
+            Conexion.setAutoCommit(true);
+            Votante votante = new Votante(nif, passwd);
+            if (operaciones.compruebaDatos(votante, Conexion) == true) {
+                Conexion.setAutoCommit(false);
+                //operaciones.votar(Conexion, votante, votoPartido);
+                Conexion.commit();
+            }
             response.sendRedirect("/Votaciones/Vistas/confirmacion_vista.jsp");
         } catch (SQLException sQLException) {
             System.out.println("Ha surgido un problema al introducir los datos en la BD.");
@@ -82,7 +86,11 @@ public class Controlador_votar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -96,7 +104,11 @@ public class Controlador_votar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
