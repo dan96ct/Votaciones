@@ -34,6 +34,9 @@ public class Operaciones {
         
          
     }
-    public void compruebaDatos(){
+    public boolean compruebaDatos(String nif, String pass){
+        boolean validar = false;
+        
+        return validar;
     }
 }
