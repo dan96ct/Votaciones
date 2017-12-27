@@ -10,16 +10,27 @@ package Modelo;
  * @author dani
  */
 public class Votante {
-    private String nif,nombre,apellido,domicilio,fecha_nac,password;
+    private String nif,nombre,apellido,domicilio,fecha_nac,password,voto;
 
-    public Votante(String nif, String nombre, String apellido, String domicilio, String fecha_nac, String password) {
+    public Votante(String nif, String nombre, String apellido, String domicilio, String fecha_nac, String password, String voto) {
         this.nif = nif;
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
         this.fecha_nac = fecha_nac;
         this.password = password;
+        this.voto = voto;
     }
+
+    public String getVoto() {
+        return voto;
+    }
+
+    public void setVoto(String voto) {
+        this.voto = voto;
+    }
+
+   
 
     public Votante(String nif, String password) {
         this.nif = nif;

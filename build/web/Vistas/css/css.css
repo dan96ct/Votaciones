@@ -1,4 +1,3 @@
-
 .cssmenu
 {
     width:auto;
@@ -72,3 +71,8 @@ width: 50%;}
 width: 25%;
 float: left;
 text-align: center;}
+.tablaCenso{
+margin: 0 auto;
+margin-top: 20px;}
+td, th{padding: 1em; text-align: center;
+border: 1px solid black;}

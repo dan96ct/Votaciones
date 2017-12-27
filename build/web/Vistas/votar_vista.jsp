@@ -22,36 +22,36 @@
                 <a class="navbar-brand" href="/Votaciones/index.jsp">Votaciones</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/Votaciones/Vistas/votar_vista.jsp">Votar</a></li>
-                <li><a href="#">Consultar censo</a></li>
+               <li class="active"><a href="/Votaciones/Vistas/votar_vista.jsp">Votar</a></li>
+                <li><a href="/Votaciones/Vistas/censo_vista.jsp">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li> <a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-                <li><a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
+                <li><a href="/Votaciones/Vistas/bajaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
             </ul>
         </div>
     </nav>
 </head>
 <body>
     <h2>Seleccione el partido</h2>
-    <div class="partidos_caja">
-        <div id="partido1" class="partido">
-            <img src="imagenes/pp.png" width="150" height="150" alt="pp"/>
-            <p><input type="radio" name="partidos" value="PP"/> Partido Popular</p>
-        </div>
-        <div id="partido2" class="partido">
-            <img src="imagenes/psoe.png" width="150" height="150" alt="psoe"/>
-            <p><input type="radio" name="partidos"value="PSOE"/> Partido socialista</p>
-        </div>
-        <div id="partido3" class="partido">
-            <img src="imagenes/podemos.jpg" width="150" height="150" alt="podemos"/>
-            <p><input type="radio" name="partidos" value="podemos"/> Podemos</p>
-        </div>
-        <div id="partido4" class="partido">
-            <img src="imagenes/ciudadanos.jpg" width="150" height="150" alt="ciudadanos"/>
-            <p><input type="radio" name="partidos" value="ciudadanos" /> Ciudadanos</p>
-        </div>
-        <form action="/Votaciones/Controlador_votar">
+    <form action="/Votaciones/Controlador_votar">
+        <div class="partidos_caja">
+            <div id="partido1" class="partido">
+                <img src="imagenes/pp.png" width="150" height="150" alt="pp"/>
+                <p><input type="radio" name="partidos" value="PP"/> Partido Popular</p>
+            </div>
+            <div id="partido2" class="partido">
+                <img src="imagenes/psoe.png" width="150" height="150" alt="psoe"/>
+                <p><input type="radio" name="partidos"value="PSOE"/> Partido socialista</p>
+            </div>
+            <div id="partido3" class="partido">
+                <img src="imagenes/podemos.jpg" width="150" height="150" alt="podemos"/>
+                <p><input type="radio" name="partidos" value="podemos"/> Podemos</p>
+            </div>
+            <div id="partido4" class="partido">
+                <img src="imagenes/ciudadanos.jpg" width="150" height="150" alt="ciudadanos"/>
+                <p><input type="radio" name="partidos" value="ciudadanos" /> Ciudadanos</p>
+            </div>
             <div class="form-group">
                 <label for="text">NIF</label>
                 <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif">
@@ -61,8 +61,8 @@
                 <input type="password" class="form-control" id="passwd" placeholder="Introduce una contraseña" name="passwd">
             </div>
             <button type="submit" class="btn btn-success">Votar</button>
-        </form>
-    </div>
+        </div>
+    </form>
 
 </body>
 </html>

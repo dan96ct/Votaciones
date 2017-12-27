@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/Dani/Documents/NetBeansProjects/votaciones_git/src/java/DAO/Operaciones.java</file>
             <file>file:/C:/Users/Dani/Documents/NetBeansProjects/votaciones_git/web/Vistas/votar_vista.jsp</file>
+            <file>file:/C:/Users/Dani/Documents/NetBeansProjects/votaciones_git/web/Vistas/censo_vista.jsp</file>
+            <file>file:/C:/Users/Dani/Documents/NetBeansProjects/votaciones_git/src/java/Controlador/Controlador_altaVotante.java</file>
             <file>file:/C:/Users/Dani/Documents/NetBeansProjects/votaciones_git/web/Vistas/css/css.css</file>
-            <file>file:/C:/Users/Dani/Documents/NetBeansProjects/votaciones_git/src/java/Controlador/Controlador_votar.java</file>
+            <file>file:/C:/Users/Dani/Documents/NetBeansProjects/votaciones_git/src/java/Controlador/Controlador_censo.java</file>
         </group>
     </open-files>
 </project-private>

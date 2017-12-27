@@ -23,11 +23,11 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="/Votaciones/Vistas/votar_vista.jsp">Votar</a></li>
-                <li><a href="#">Consultar censo</a></li>
+                <li><a href="/Votaciones/Vistas/censo_vista.jsp">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li> <a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-                <li><a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
+                <li><a href="/Votaciones/Vistas/bajaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
             </ul>
         </div>
     </nav>

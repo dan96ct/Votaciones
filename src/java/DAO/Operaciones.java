@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -58,5 +59,19 @@ public class Operaciones {
         }
 
         return rs.first();
+    }
+    
+    public ArrayList getVotantes(Connection conn) throws SQLException{
+        ArrayList<Votante> votantes = new ArrayList<>();
+        String ordensql = "SELECT * FROM votantes;";
+        PreparedStatement PrepStm = conn.prepareStatement(ordensql);
+        ResultSet rs = PrepStm.executeQuery();
+        while(rs.next()){
+        Votante votante = new Votante(rs.getString("nif"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("domicilio"), rs.getString("fecha_nac"), rs.getString("password"),rs.getString("voto"));
+        votantes.add(votante);
+        }
+        
+        return votantes;
+        
     }
 }

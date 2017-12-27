@@ -63,7 +63,7 @@ public class Controlador_altaVotante extends HttpServlet {
         String fecha_nac = (String) request.getParameter("fecha_nac");
         String passwd = (String) request.getParameter("passwd");
 
-        Votante votante = new Votante(nif, nombre, apellidos, Domicilio, fecha_nac, passwd);
+        Votante votante = new Votante(nif, nombre, apellidos, Domicilio, fecha_nac, passwd, "NO");
         
         try {
             Operaciones operaciones = new Operaciones();
