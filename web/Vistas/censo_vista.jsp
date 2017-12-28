@@ -20,15 +20,15 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/Votaciones/index.jsp">Votaciones</a>
+            <a class="navbar-brand" href="../index.jsp">Votaciones</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="/Votaciones/Vistas/votar_vista.jsp">Votar</a></li>
-            <li class="active"><a href="/Votaciones/Vistas/censo_vista.jsp">Consultar censo</a></li>
+            <li><a href="votar_vista.jsp">Votar</a></li>
+            <li class="active"><a href="../Controlador_censo">Consultar censo</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li> <a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-            <li><a href="/Votaciones/Vistas/bajaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
+            <li> <a href="altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
+            <li><a href="bajaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
         </ul>
     </div>
 </nav>
@@ -37,13 +37,12 @@
     <% ArrayList<Votante> votantes = (ArrayList<Votante>) session.getAttribute("votantes");
     session.invalidate(); %>
     <table class="tablaCenso">
-        <tr><td><img src="imagenes/pp.png" width="150" height="150" alt="pp"/></td><td><img src="imagenes/psoe.png" width="150" height="150" alt="psoe"/></td><td><img src="imagenes/podemos.jpg" width="150" height="150" alt="podemos"/></td><td><img src="imagenes/ciudadanos.jpg" width="150" height="150" alt="ciudadanos"/></td></tr>
-        <tr><td><b>Votos:</b></td><td><b>Votos:</b></td><td><b>Votos:</b></td><td><b>Votos:</b></td></tr>
+        
     </table>
     <table class="tablaCenso">
         <tr><th>NIF</th><th>Nombre</th><th>Apellidos</th><th>Domicilio</th><th>Fecha de nacimiento</th><th>Voto</th></tr>
                 <% for (int i = 0; i < votantes.size(); i++) {
-                                    %> <tr> <td><% out.print(votantes.get(i).getNif()); %></td></tr>
+                                    %> <tr> <td><% out.print(votantes.get(i).getNif()); %></td><td><% out.print(votantes.get(i).getNombre()); %></td><td><% out.print(votantes.get(i).getApellido()); %></td><td><% out.print(votantes.get(i).getDomicilio()); %></td><td><% out.print(votantes.get(i).getFecha_nac()); %></td><td><% out.print(votantes.get(i).getVoto()); %></td></tr>
         <%  }%>
     </table>
 

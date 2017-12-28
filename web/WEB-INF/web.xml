@@ -12,6 +12,10 @@
         <servlet-name>Controlador_censo</servlet-name>
         <servlet-class>Controlador.Controlador_censo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controlador_mostrarPartidos</servlet-name>
+        <servlet-class>Controlador.Controlador_mostrarPartidos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador_altaVotante</servlet-name>
         <url-pattern>/Controlador_altaVotante</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Controlador_censo</servlet-name>
         <url-pattern>/Controlador_censo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador_mostrarPartidos</servlet-name>
+        <url-pattern>/Controlador_mostrarPartidos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

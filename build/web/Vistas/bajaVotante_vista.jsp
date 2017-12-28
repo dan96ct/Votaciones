@@ -20,15 +20,15 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/Votaciones/index.jsp">Votaciones</a>
+                <a class="navbar-brand" href="../index.jsp">Votaciones</a>
             </div>
             <ul class="nav navbar-nav">
-               <li><a href="/Votaciones/Vistas/votar_vista.jsp">Votar</a></li>
-                <li><a href="/Votaciones/Vistas/censo_vista.jsp">Consultar censo</a></li>
+               <li><a href="votar_vista.jsp">Votar</a></li>
+                <li><a href="../Controlador_censo">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li> <a href="/Votaciones/Vistas/altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-                <li class="active"><a href="/Votaciones/Vistas/bajaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
+                <li> <a href="altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
+                <li class="active"><a href="bajaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
             </ul>
         </div>
     </nav>
