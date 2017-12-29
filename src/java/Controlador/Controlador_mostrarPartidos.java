@@ -6,6 +6,7 @@
 package Controlador;
 
 import DAO.ConexionBBDD;
+import DAO.Operaciones;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -32,6 +33,9 @@ public class Controlador_mostrarPartidos extends HttpServlet {
         try {
             ConexBD = ConexionBBDD.GetConexion();
             Conexion = ConexBD.GetCon();
+            Operaciones operaciones = new Operaciones();
+            
+            
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Controlador_mostrarPartidos.class.getName()).log(Level.SEVERE, null, ex);
