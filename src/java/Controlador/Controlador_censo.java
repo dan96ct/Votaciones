@@ -38,9 +38,9 @@ public class Controlador_censo extends HttpServlet {
             Conexion = ConexBD.GetCon();
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Controlador_altaVotante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador_censo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador_altaVotante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador_censo.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -62,10 +62,12 @@ public class Controlador_censo extends HttpServlet {
         HttpSession session = request.getSession();
         try {
             session.setAttribute("votantes", operaciones.getVotantes(Conexion));
-                        response.sendRedirect("/Votaciones/Vistas/censo_vista.jsp");
+            session.setAttribute("partidos", operaciones.getPartidos(Conexion));
+            response.sendRedirect("/Votaciones/Vistas/censo_vista.jsp");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador_censo.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("/Votaciones/Vistas/errorConexion_vista.jsp");
+
         }
 
     }

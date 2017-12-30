@@ -10,9 +10,10 @@ package Modelo;
  * @author dani
  */
 public class Partido {
-   private String nombre,siglas, logo, votos;
+   private String nombre,siglas, logo;
+   private int votos;
 
-    public Partido(String nombre, String siglas, String logo, String votos) {
+    public Partido(String nombre, String siglas, String logo, int votos) {
         this.nombre = nombre;
         this.siglas = siglas;
         this.logo = logo;
@@ -44,11 +45,11 @@ public class Partido {
         this.logo = logo;
     }
 
-    public String getVotos() {
+    public int getVotos() {
         return votos;
     }
 
-    public void setVotos(String votos) {
+    public void setVotos(int votos) {
         this.votos = votos;
     }
    

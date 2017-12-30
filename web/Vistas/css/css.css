@@ -57,7 +57,10 @@
     text-decoration: none;
 
 }
-
+.registro_baja{
+    width: 50%;
+    margin:0 auto;
+}
 .cssmenu li a:hover
 {
     background-color: #E6152B;

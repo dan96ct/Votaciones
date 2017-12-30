@@ -7,7 +7,8 @@ package Controlador;
 
 import DAO.ConexionBBDD;
 import DAO.Operaciones;
-import Excepciones.Voto_exception;
+import Excepciones.AltaVotante_exception;
+import Excepciones.BajaVotante_exception;
 import Modelo.Votante;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,27 +24,26 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author dani
+ * @author Dani
  */
-public class Controlador_votar extends HttpServlet {
-
-    private Connection Conexion;
-
+public class Controlador_bajaVotante extends HttpServlet {
+ private Connection Conexion;
     @Override
     public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        ConexionBBDD ConexBD;  
         try {
-            super.init(); //To change body of generated methods, choose Tools | Templates.
-            ConexionBBDD ConexBD;
             ConexBD = ConexionBBDD.GetConexion();
-            Conexion = ConexBD.GetCon();
+            Conexion=ConexBD.GetCon();
+
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador_bajaVotante.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador_bajaVotante.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
     }
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,28 +54,30 @@ public class Controlador_votar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            String nif = (String) request.getParameter("nif");
-            String passwd = (String) request.getParameter("passwd");
-            String votoPartido = (String) request.getParameter("partidos").toString(); //Si no lo paso a string no me coge el valor 
-            Operaciones operaciones = new Operaciones();
-            Conexion.setAutoCommit(true);
-            Votante votante = new Votante(nif, passwd);
-            if (operaciones.compruebaDatos(votante, Conexion) == true) {
-                Conexion.setAutoCommit(false);
-                operaciones.votar(Conexion, votante, votoPartido);
-                Conexion.commit();
-                response.sendRedirect("/Votaciones/Vistas/confirmacion_vista.jsp");
-            }
+        try (PrintWriter out = response.getWriter()) {
 
+            String nif = (String) request.getParameter("nif");
+        String passwd = (String) request.getParameter("passwd");
+
+        Votante votante = new Votante(nif, passwd);
+        
+        try {
+            Operaciones operaciones = new Operaciones();
+            operaciones.compruebaDatos_NIF_PASS(votante, Conexion);
+            Conexion.setAutoCommit(false);
+            operaciones.bajaVotante(votante,Conexion);
+            Conexion.commit();
+            response.sendRedirect("/Votaciones/Vistas/confirmacion_vista.jsp");
         } catch (SQLException sQLException) {
             response.sendRedirect("/Votaciones/Vistas/errorConexion_vista.jsp");
-        } catch (Voto_exception exc) {
+        }
+        catch (BajaVotante_exception exc){
             HttpSession session = request.getSession();
             session.setAttribute("error", exc.getMessage());
             response.sendRedirect("/Votaciones/Vistas/Error_vista.jsp");
+        }
         }
     }
 
@@ -91,11 +93,7 @@ public class Controlador_votar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -109,11 +107,7 @@ public class Controlador_votar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(Controlador_votar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -16,6 +16,10 @@
         <servlet-name>Controlador_mostrarPartidos</servlet-name>
         <servlet-class>Controlador.Controlador_mostrarPartidos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controlador_bajaVotante</servlet-name>
+        <servlet-class>Controlador.Controlador_bajaVotante</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador_altaVotante</servlet-name>
         <url-pattern>/Controlador_altaVotante</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Controlador_mostrarPartidos</servlet-name>
         <url-pattern>/Controlador_mostrarPartidos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador_bajaVotante</servlet-name>
+        <url-pattern>/Controlador_bajaVotante</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

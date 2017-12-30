@@ -23,7 +23,7 @@
                 <a class="navbar-brand" href="../index.jsp">Votaciones</a>
             </div>
             <ul class="nav navbar-nav">
-               <li><a href="votar_vista.jsp">Votar</a></li>
+                <li><a href="../Controlador_mostrarPartidos">Votar</a></li>
                 <li><a href="../Controlador_censo">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -32,8 +32,23 @@
             </ul>
         </div>
     </nav>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+</head>
+<body>
+
+    <div class="registro_baja">
+        <h2>Introduce tus datos</h2>
+        <form action="../Controlador_bajaVotante">    
+            <div class="form-group">
+                <label for="text">NIF</label>
+                <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control" id="passwd" placeholder="Introduce una contraseña" name="passwd" required>
+            </div>
+            <button type="submit" class="btn btn-success">Votar</button>
+
+        </form>
+    </div>
+</body>
 </html>

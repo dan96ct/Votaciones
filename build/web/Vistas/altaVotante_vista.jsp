@@ -23,12 +23,12 @@
                 <a class="navbar-brand" href="../index.jsp">Votaciones</a>
             </div>
             <ul class="nav navbar-nav">
-               <li><a href="votar_vista.jsp">Votar</a></li>
+               <li><a href="../Controlador_mostrarPartidos">Votar</a></li>
                <li><a href="../Controlador_censo">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"> <a href="altaVotante_vista.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-                <li><a href="altaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
+                <li><a href="bajaVotante_vista.jsp"><span id="iconUser" class="glyphicon glyphicon-user"></span> Darse de baja</a></li>
             </ul>
         </div>
     </nav>
@@ -39,27 +39,27 @@
         <form action="/Votaciones/Controlador_altaVotante">
             <div class="form-group">
                 <label for="text">NIF</label>
-                <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif">
+                <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif" required>
             </div>
             <div class="form-group">
                 <label for="text">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Introduce tu nombre" name="nombre">
+                <input type="text" class="form-control" id="nombre" placeholder="Introduce tu nombre" name="nombre" required>
             </div>
             <div class="form-group">
                 <label for="text">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos" placeholder="Introduce tus apellidos" name="apellidos">
+                <input type="text" class="form-control" id="apellidos" placeholder="Introduce tus apellidos" name="apellidos" required>
             </div>
             <div class="form-group">
                 <label for="text">Domicilio</label>
-                <input type="text" class="form-control" id="Domicilio" placeholder="Introduce tu domicilio" name="Domicilio">
+                <input type="text" class="form-control" id="Domicilio" placeholder="Introduce tu domicilio" name="Domicilio" required>
             </div>
             <div class="form-group">
                 <label for="date">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="fecha_nac"  name="fecha_nac">
+                <input type="date" class="form-control" id="fecha_nac"  name="fecha_nac" required>
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="passwd" placeholder="Introduce una contraseña" name="passwd">
+                <input type="password" class="form-control" id="passwd" placeholder="Introduce una contraseña" name="passwd" required>
             </div>
             <button type="submit" class="btn btn-success">Aceptar</button>
         </form>

@@ -4,6 +4,8 @@
     Author     : dani
 --%>
 
+<%@page import="Modelo.Partido"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +24,7 @@
                 <a class="navbar-brand" href="../index.jsp">Votaciones</a>
             </div>
             <ul class="nav navbar-nav">
-               <li class="active"><a href="votar_vista.jsp">Votar</a></li>
+                <li class="active"><a href="../Controlador_mostrarPartidos">Votar</a></li>
                 <li><a href="../Controlador_censo">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -33,35 +35,32 @@
     </nav>
 </head>
 <body>
+    <% if (session.getAttribute("partidos") == null){
+        %>
+        <jsp:forward page="../Controlador_mostrarPartidos"/>
+    <% } 
+        ArrayList<Partido> partidos = (ArrayList<Partido>) session.getAttribute("partidos");
+         session.invalidate();%>
     <h2>Seleccione el partido</h2>
-    <form action="/Votaciones/Controlador_votar">
+    <form action="../Controlador_votar">    
         <div class="partidos_caja">
-            <div id="partido1" class="partido">
-                <img class="imagenPartido" src="imagenes/pp.png"alt="pp"/>
-                <p><input type="radio" name="partidos" value="PP"/> Partido Popular</p>
+            <% for (int i = 0; i < partidos.size(); i++) {    
+        %>
+            <div class="partido">
+                <img class="imagenPartido" src="<% out.print(partidos.get(i).getLogo()); %>"/>
+                <p><input type="radio" name="partidos" value="<% out.print(partidos.get(i).getSiglas()); %>" required/><% out.print(partidos.get(i).getNombre()); %></p>
             </div>
-            <div id="partido2" class="partido">
-                <img class="imagenPartido" src="imagenes/psoe.png"  alt="psoe"/>
-                <p><input type="radio" name="partidos"value="PSOE"/> Partido socialista</p>
-            </div>
-            <div id="partido3" class="partido">
-                <img  class="imagenPartido" src="imagenes/podemos.jpg"  alt="podemos"/>
-                <p><input type="radio" name="partidos" value="podemos"/> Podemos</p>
-            </div>
-            <div id="partido4" class="partido">
-                <img class="imagenPartido" src="imagenes/ciudadanos.jpg" alt="ciudadanos"/>
-                <p><input type="radio" name="partidos" value="ciudadanos" /> Ciudadanos</p>
-            </div>  
-           
-            </div>
+        <% } %>
+
+        </div>
         <div class="registro_voto">
             <div class="form-group">
                 <label for="text">NIF</label>
-                <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif">
+                <input type="text" class="form-control" id="nif" placeholder="Introduce tu NIF" name="nif" required>
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="passwd" placeholder="Introduce una contraseña" name="passwd">
+                <input type="password" class="form-control" id="passwd" placeholder="Introduce una contraseña" name="passwd" required>
             </div>
             <button type="submit" class="btn btn-success">Votar</button>
         </div>

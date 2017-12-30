@@ -4,6 +4,7 @@
     Author     : Dani
 --%>
 
+<%@page import="Modelo.Partido"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Modelo.Votante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,7 +24,7 @@
             <a class="navbar-brand" href="../index.jsp">Votaciones</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="votar_vista.jsp">Votar</a></li>
+            <li><a href="../Controlador_mostrarPartidos">Votar</a></li>
             <li class="active"><a href="../Controlador_censo">Consultar censo</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -34,10 +35,23 @@
 </nav>
 </head>
 <body>
-    <% ArrayList<Votante> votantes = (ArrayList<Votante>) session.getAttribute("votantes");
-    session.invalidate(); %>
+    <% if (session.getAttribute("votantes") == null) {
+    %>
+    <jsp:forward page="../Controlador_censo"/>
+    <% }
+        ArrayList<Votante> votantes = (ArrayList<Votante>) session.getAttribute("votantes");
+        ArrayList<Partido> partidos = (ArrayList<Partido>) session.getAttribute("partidos");
+        session.invalidate(); %>
     <table class="tablaCenso">
-        
+        <tr> <% for (int i = 0; i < partidos.size(); i++) {
+            %><th><%out.print(partidos.get(i).getNombre()); %> </th><%
+                } %> </tr>
+        <tr> <% for (int i = 0; i < partidos.size(); i++) {
+            %><td><img class="imagenPartido" src="<%out.print(partidos.get(i).getLogo()); %>"/> </td><%
+                } %> </tr>
+         <tr> <% for (int i = 0; i < partidos.size(); i++) {
+             %><td>Votos:<b><%out.print(partidos.get(i).getVotos()  ); %></b> </td><%
+                } %> </tr>
     </table>
     <table class="tablaCenso">
         <tr><th>NIF</th><th>Nombre</th><th>Apellidos</th><th>Domicilio</th><th>Fecha de nacimiento</th><th>Voto</th></tr>

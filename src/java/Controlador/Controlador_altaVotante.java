@@ -7,6 +7,7 @@ package Controlador;
 
 import DAO.ConexionBBDD;
 import DAO.Operaciones;
+import Excepciones.AltaVotante_exception;
 import Modelo.Votante;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -67,12 +69,18 @@ public class Controlador_altaVotante extends HttpServlet {
         
         try {
             Operaciones operaciones = new Operaciones();
+            operaciones.compruebaNIF(votante, Conexion);
             Conexion.setAutoCommit(false);
             operaciones.altaVotante(votante,Conexion);
             Conexion.commit();
             response.sendRedirect("/Votaciones/Vistas/confirmacion_vista.jsp");
         } catch (SQLException sQLException) {
-            System.out.println("Ha surgido un problema al introducir los datos en la BD.");
+            response.sendRedirect("/Votaciones/Vistas/errorConexion_vista.jsp");
+        }
+        catch (AltaVotante_exception exc){
+            HttpSession session = request.getSession();
+            session.setAttribute("error", exc.getMessage());
+            response.sendRedirect("/Votaciones/Vistas/Error_vista.jsp");
         }
         
                 

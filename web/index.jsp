@@ -20,7 +20,7 @@
                 <a class="navbar-brand" href="index.jsp">Votaciones</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="Vistas/votar_vista.jsp">Votar</a></li>
+                <li><a href="Controlador_mostrarPartidos">Votar</a></li>
                 <li><a href="Controlador_censo">Consultar censo</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
