@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author dani
+ * @author dani NOTA: TODAS LAS CONTRASEÑAS DE LOS VOTANTES ES: abcd
  */
 public class Operaciones {
 
@@ -62,30 +62,34 @@ public class Operaciones {
         PrepStm.setString(2, votante.getPassword());
         // execute select SQL stetement
         ResultSet rs = PrepStm.executeQuery();
+
+        if (rs.next() == false) {
+            throw new Voto_exception("El NIF y la contraseña no coinciden o no existe.");
+        }
+        rs.first();
+
         while (rs.next()) {
             String voto = rs.getString("voto");
+            System.out.println("Contraseña: " + rs.getString("password"));
             if (voto.equals("SI")) {
                 throw new Voto_exception("Tu voto ya ha sido registrado, no puedes votar dos veces");
             }
         }
-        rs.first();
-        if(rs.next() == false){
-            throw new Voto_exception("El NIF y la contraseña no coinciden o no existe.");
-        }
 
         return rs.first();
     }
-    public void compruebaDatos_NIF_PASS(Votante votante, Connection conn) throws SQLException, BajaVotante_exception{
+
+    public void compruebaDatos_NIF_PASS(Votante votante, Connection conn) throws SQLException, BajaVotante_exception {
         String ordensql = "SELECT * FROM votantes where `nif`=? and AES_DECRYPT(password,'sorbete_de_limon')=?;;";
         PreparedStatement PrepStm = conn.prepareStatement(ordensql);
         PrepStm.setString(1, votante.getNif());
         PrepStm.setString(2, votante.getPassword());
         // execute select SQL stetement
         ResultSet rs = PrepStm.executeQuery();
-         if(rs.next() == false){
-             throw new BajaVotante_exception("No se ha encontrado el nif y la contraseña introducidos");
-         }
-        
+        if (rs.next() == false) {
+            throw new BajaVotante_exception("No se ha encontrado el nif y la contraseña introducidos");
+        }
+
     }
 
     public void compruebaNIF(Votante votante, Connection conn) throws SQLException, AltaVotante_exception {

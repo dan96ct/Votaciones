@@ -31,6 +31,10 @@
     </nav>
 </head>
 <body>
+    <div id="titulo">
+    <h1 class="titulo_inicio">Votaciones generales</h1>
+    <img width="400px" height="200px" src="Vistas/imagenes/Logo.jpg" alt=""/>
+    </div>
 
 </body>
 </html>
