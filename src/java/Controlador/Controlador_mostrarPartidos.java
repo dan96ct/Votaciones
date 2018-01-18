@@ -34,7 +34,6 @@ public class Controlador_mostrarPartidos extends HttpServlet {
         try {
             ConexBD = ConexionBBDD.GetConexion();
             Conexion = ConexBD.GetCon();
-            Operaciones operaciones = new Operaciones();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Controlador_mostrarPartidos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

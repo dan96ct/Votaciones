@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="../../Proyecto_autobuses/web/Vistas/js/JavaScript.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Votaciones</title>
         <link href="Vistas/css/css.css" rel="stylesheet" type="text/css"/>
