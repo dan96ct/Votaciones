@@ -63,11 +63,6 @@ public class Operaciones {
         // execute select SQL stetement
         ResultSet rs = PrepStm.executeQuery();
 
-        if (rs.next() == false) {
-            throw new Voto_exception("El NIF y la contraseña no coinciden o no existe.");
-        }
-        rs.first();
-
         while (rs.next()) {
             String voto = rs.getString("voto");
             System.out.println("Contraseña: " + rs.getString("password"));
@@ -75,7 +70,10 @@ public class Operaciones {
                 throw new Voto_exception("Tu voto ya ha sido registrado, no puedes votar dos veces");
             }
         }
-
+        rs.first();
+        if (rs.next() == false) {
+            throw new Voto_exception("El NIF y la contraseña no coinciden o no existe.");
+        }
         return rs.first();
     }
 
@@ -128,7 +126,6 @@ public class Operaciones {
         ResultSet rs = PrepStm.executeQuery();
         while (rs.next()) {
             Partido partido = new Partido(rs.getString("nombre"), rs.getString("siglas"), rs.getString("logo"), rs.getInt("votos"));
-            System.out.println(partido.getLogo());
             partidos.add(partido);
         }
         return partidos;
